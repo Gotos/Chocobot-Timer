@@ -1,5 +1,4 @@
 require_relative './Models/TimedEvent.rb'
-require_relative '../../Command.rb'
 
 class Timer
 
