@@ -52,7 +52,7 @@ class Timer
 		entry.destroy() if entry != nil
 	end
 
-	def newMsg()
+	def newMsg(msg)
 		@msgCount += 1
 	end
 
@@ -66,7 +66,7 @@ class Timer
 
 	def self.addPlugin()
 		PluginLoader.addNewMsg(self)
-		PluginLoader.addCommand(Command.new("!timeradd", lambda do |data, priv|
+		PluginLoader.addCommand(Command.new("!timeradd", lambda do |data, priv, user|
 			if priv <= 10
 				getInstance.add(data[0], data[3..-1].join(" "), data[1].to_i, data[2].to_i)
 				getInstance.messager.message("Timer " + data[0] + " wurde gesetzt mit dem Zeitintervall " + data[1].to_i.to_s + " Minute(n) und dem Nachrichtenintervall " + data[2].to_i.to_s + ".")
@@ -74,7 +74,7 @@ class Timer
 			end
 			return false
 		end))
-		PluginLoader.addCommand(Command.new("!timerrem", lambda do |data, priv|
+		PluginLoader.addCommand(Command.new("!timerrem", lambda do |data, priv, user|
 			if priv <= 10
 				getInstance.remove(data[0])
 				getInstance.messager.message("Timer " + data[0] + " wurde entfernt.")
@@ -82,7 +82,7 @@ class Timer
 			end
 			return false
 		end))
-		PluginLoader.addCommand(Command.new("!timerlist", lambda do |data, priv|
+		PluginLoader.addCommand(Command.new("!timerlist", lambda do |data, priv, user|
 			if priv <= 10
 				getInstance.messager.message("Folgende Timer sind installiert: " + getInstance.timerList().join(" "))
 				return true
