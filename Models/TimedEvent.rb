@@ -11,4 +11,5 @@ class TimedEvent
 	property :messagesPassed,	Integer, :required => true
 	property :t,				Integer, :default => -1
 	property :mc,				Integer, :default => -1
+	property :active,			Boolean, :default => true
 end

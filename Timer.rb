@@ -33,7 +33,7 @@ class Timer
 						timerEvent.t = @time
 						if timerEvent.messagesPassed + timerEvent.mc <= @msgCount
 							timerEvent.mc = @msgCount
-							messager.message(timerEvent.msg)
+							messager.message(timerEvent.msg) if timerEvent.active
 						end
 					end
 					timerEvent.save
@@ -93,6 +93,26 @@ class Timer
 		PluginLoader.addCommand(Command.new("!testtimer", lambda do |data, priv, user|
 			if priv <= 10
 				getInstance.messager.message(TimedEvent.get(data[0]).msg)
+				return true
+			end
+			return false
+		end))
+		PluginLoader.addCommand(Command.new("!stoptimer", lambda do |data, priv, user|
+			if priv <= 10
+				timerEvent = TimedEvent.get(data[0])
+				timerEvent.active = false
+				timerEvent.save
+				getInstance.messager.message("Timer " + data[0] + " gestoppt.")
+				return true
+			end
+			return false
+		end))
+		PluginLoader.addCommand(Command.new("!starttimer", lambda do |data, priv, user|
+			if priv <= 10
+				timerEvent = TimedEvent.get(data[0])
+				timerEvent.active = true
+				timerEvent.save
+				getInstance.messager.message("Timer " + data[0] + " gestartet.")
 				return true
 			end
 			return false
