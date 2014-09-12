@@ -4,7 +4,7 @@ A Plugin for [Chocobot](https://github.com/Gotos/Chocobot) for createing message
 
 # How-To
 
-Chocobot-Timer adds 4 new commands:
+Chocobot-Timer adds six new commands:
 
 !addtimer, !deltimer and !listtimer.
 
@@ -14,7 +14,11 @@ To override an existing timer, just add a new timer with the same name.
 
 To delete a timer, use !deltimer [name].
 
-!listtimer lists all the names of installed timmers.
+!listtimer lists all the names of installed timers.
+
+!testtimer [name] will test the timer [name]: That means, Chocobot will send the timers message to the chat.
+
+!stoptimer [name] will deactivate a timer without removing it. It will not be triggered until started again via !starttimer [name].
 
 # Install
 
