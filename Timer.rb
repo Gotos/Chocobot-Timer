@@ -45,7 +45,7 @@ class Timer
 	end
 
 	def add(name, msg, time, messagesPassed)
-		TimedEvent.create(:name => name, :msg => msg, :time => time, :messagesPassed => messagesPassed, :t => time, :mc => messagesPassed)
+		TimedEvent.create(:name => name, :msg => msg, :time => time, :messagesPassed => messagesPassed, :t => @time, :mc => @msgCount)
 	end
 
 	def remove(name)
