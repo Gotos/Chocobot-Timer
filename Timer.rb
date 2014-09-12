@@ -90,5 +90,12 @@ class Timer
 			end
 			return false
 		end))
+		PluginLoader.addCommand(Command.new("!testtimer", lambda do |data, priv, user|
+			if priv <= 10
+				getInstance.messager.message(TimedEvent.get(data[0]).msg)
+				return true
+			end
+			return false
+		end))
 	end
 end
