@@ -75,7 +75,7 @@ class Timer
 			end
 			return false
 		end))
-		PluginLoader.addCommand(Command.new("!remtimer", lambda do |data, priv, user|
+		PluginLoader.addCommand(Command.new("!deltimer", lambda do |data, priv, user|
 			if priv <= 10
 				getInstance.remove(data[0])
 				getInstance.messager.message("Timer " + data[0] + " wurde entfernt.")
